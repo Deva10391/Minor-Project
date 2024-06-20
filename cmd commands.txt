@@ -1,0 +1,11 @@
+to run the kafka server
+cd C:\kafka_2.13-3.7.0\bin\windows
+zookeeper-server-start.bat C:\kafka_2.13-3.7.0\config\zookeeper.properties
+
+cd C:\kafka_2.13-3.7.0\bin\windows
+kafka-server-start.bat C:\kafka_2.13-3.7.0\config\server.properties
+
+
+to check the kafka cluster
+cd C:\kafka_2.13-3.7.0\bin\windows
+C:\kafka_2.13-3.7.0\bin\windows>kafka-topics.bat --list --bootstrap-server localhost:9092
