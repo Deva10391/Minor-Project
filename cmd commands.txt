@@ -42,7 +42,9 @@ kafka create topic (sql table, named (here) as: test):
 kafka-topics.bat --create --bootstrap-server localhost:9092 --topic test
 
 starting kafka producer:
+cd C:\kafka_2.13-3.7.0\bin\windows
 kafka-console-producer.bat --broker-list localhost:9092 --topic test
 
 starting kafka consumer:
+cd C:\kafka_2.13-3.7.0\bin\windows
 kafka-console-consumer.bat --topic test --bootstrap-server localhost:9092 --from-beginning
