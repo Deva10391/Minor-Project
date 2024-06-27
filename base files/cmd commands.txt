@@ -1,0 +1,50 @@
+to initiate the kafka server:
+cd C:\kafka_2.13-3.7.0\bin\windows
+zookeeper-server-start.bat C:\kafka_2.13-3.7.0\config\zookeeper.properties
+
+cd C:\kafka_2.13-3.7.0\bin\windows
+kafka-server-start.bat C:\kafka_2.13-3.7.0\config\server.properties
+
+
+to terminate the kafka server:
+cd C:\kafka_2.13-3.7.0\bin\windows
+zookeeper-server-stop.bat C:\kafka_2.13-3.7.0\config\zookeeper.properties
+kafka-server-stop.bat C:\kafka_2.13-3.7.0\config\server.properties
+
+
+to check the list of kafka cluster:
+cd C:\kafka_2.13-3.7.0\bin\windows
+kafka-topics.bat --list --bootstrap-server localhost:9092
+
+
+to stop any running kafka server:
+cd C:\kafka_2.13-3.7.0\bin\windows
+.\kafka-server-stop.bat
+.\zookeeper-server-stop.bat
+
+
+connect to zookeeper directly:
+zookeeper-shell localhost:2181
+
+get broker with id 0:
+get /brokers/ids/0
+
+
+to check: kafka is running if:
+C:\Windows\System32>netstat -ano | findstr :9092
+  TCP    0.0.0.0:9092           0.0.0.0:0              LISTENING       14272
+  TCP    192.168.43.202:9092    192.168.43.202:59612   ESTABLISHED     14272
+  TCP    192.168.43.202:59612   192.168.43.202:9092    ESTABLISHED     14272
+  TCP    [::]:9092              [::]:0                 LISTENING       14272
+
+
+kafka create topic (sql table, named (here) as: test):
+kafka-topics.bat --create --bootstrap-server localhost:9092 --topic test
+
+starting kafka producer:
+cd C:\kafka_2.13-3.7.0\bin\windows
+kafka-console-producer.bat --broker-list localhost:9092 --topic test
+
+starting kafka consumer:
+cd C:\kafka_2.13-3.7.0\bin\windows
+kafka-console-consumer.bat --topic test --bootstrap-server localhost:9092 --from-beginning
